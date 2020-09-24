@@ -1,0 +1,3 @@
+certbot_email: some@email.com
+certbot_hosts:
+  - registry.somesite.com
