@@ -13,7 +13,7 @@
     ignore_errors: yes
 
 -   name: Up certbot standalone Apache
-    shell: "docker run -d --name apache -v /var/www/html:/usr/local/apache2/htdocs/ -p 80:80 httpd:2.4"
+    shell: "docker run -d --name registry_apache -v /var/www/html:/usr/local/apache2/htdocs/ -p 80:80 httpd:2.4"
     when: port_check.failed == true
 
 -   name: Generate new certificate
@@ -22,5 +22,5 @@
     when: not item.stat.exists
 
 -   name: Down certbot Apache
-    shell: "docker rm -f apache"
+    shell: "docker rm -f registry_apache"
     when: port_check.failed == true
